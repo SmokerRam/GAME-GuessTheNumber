@@ -6,9 +6,54 @@ import os
 equals = ("=========================================")
 clear = lambda: os.system('cls')
 
+def guessNumber(x, y):
+    random = x
+    limit = y
+    number = 0
+    attemps = 0
+
+    print(random)
+
+    while number != random:
+
+        print(f"Attemps: {attemps}")
+        number = int(input(f"Please, choose a number between 1 and {limit}: "))
+        
+        if number > random:
+            attemps += 1
+            substact = number - random
+            if substact < 10:
+                print(big + close)
+            else:
+                print(big + far)
+        else:
+            attemps += 1
+            substact = random - number
+            if substact < 10:
+                print(small + close)
+            else:
+                print(small + far)
+    
+    clear()
+    print(equals)
+    print("|-------------CONGRATULATIONS-----------|")
+    print(f"{equals}\n")
+
+    print(f"|--- You guessed the number '{random}' in just {attemps} attempts ---|")
+    input('\nPress any key to continue...')
+    main()
+
 def menu(op):
     if op == 1:
-        return
+        clear()
+        print(equals)
+        print("|------------GUESS THE NUMBER-----------|")
+        print(f"{equals}\n\n")
+
+        number_limit = int(input("Please, choose a number greater than 1: "))
+        random_number = random.randint(1, number_limit)
+        print()
+        guessNumber(random_number, number_limit)
 
     elif op == 2:
         clear()
