@@ -67,6 +67,7 @@ def guessnumber(x, y):
 def menu(op):
 
     if op == 1:
+        
         clear()
 
         while True:
@@ -122,7 +123,7 @@ def main():
     clear()
 
     while True:  
-          
+
         print(equals)
         print("|-----Welcome to 'Guess the Number'-----|")
         print(f"{equals}\n")
@@ -132,7 +133,7 @@ def main():
             print("2. Instruccions")
             print("3. Exit")
 
-            option = int(input("\nPlease choose a option to continue: "))
+            option = int(input("\nPlease choose an option to continue: "))
 
             if option < 1 or option > 3:
                 print("\n|--- ERROR: The option entered is invalid ---|\n")
