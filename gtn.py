@@ -4,9 +4,13 @@ import os
 
 #Global Constants
 equals = ("=========================================")
+big = ("\n|--- Try again, the number is big. ")
+small = ("\n|--- Try again, the number is small. ")
+close = ("You're close ---|\n")
+far = ("You're far ---|\n")
 clear = lambda: os.system('cls')
 
-def guessNumber(x, y):
+def guessnumber(x, y):
     random = x
     limit = y
     number = 0
