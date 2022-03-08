@@ -10,29 +10,37 @@ close = ("You're close ---|\n")
 far = ("You're far ---|\n")
 clear = lambda: os.system('cls')
 
+#Function game base
 def guessnumber(x, y):
+    #Constant that save the values
     random = x
     limit = y
     number = 0
+
+    #Attempt counter
     attemps = 0
 
-    print(random)
-
+    #True until both numbers are equal
     while number != random:
 
         print(f"Attemps: {attemps}")
         number = int(input(f"Please, choose a number between 1 and {limit}: "))
         
+        #If the number is greater than the generated
         if number > random:
             attemps += 1
             substact = number - random
+            #If the number is close or far than the generated
             if substact < 10:
                 print(big + close)
             else:
                 print(big + far)
+
+        #If the number is less than the generated
         else:
             attemps += 1
             substact = random - number
+            #If the number is close or far than the generated
             if substact < 10:
                 print(small + close)
             else:
@@ -54,9 +62,12 @@ def menu(op):
         print("|------------GUESS THE NUMBER-----------|")
         print(f"{equals}\n\n")
 
+        #Assigned limit by the user
         number_limit = int(input("Please, choose a number greater than 1: "))
+        #Generated the number
         random_number = random.randint(1, number_limit)
         print()
+        #Sending the values
         guessNumber(random_number, number_limit)
 
     elif op == 2:
