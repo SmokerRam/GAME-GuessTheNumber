@@ -2,17 +2,24 @@
 import random
 import os
 
-#Global Constants
+#Constants
 equals = ("=========================================")
 big = ("\n|--- Try again, the number is big. ")
 small = ("\n|--- Try again, the number is small. ")
 close = ("You're close ---|\n")
 far = ("You're far ---|\n")
+#To clear the terminal
 clear = lambda: os.system('cls')
 
 #Function game base
 def guessnumber(x, y):
-    #Constant that save the values
+
+    clear()
+    print(equals)
+    print("|------------GUESS THE NUMBER-----------|")
+    print(f"{equals}\n\n")
+
+    #Constants that save the values
     random = x
     limit = y
     number = 0
@@ -30,6 +37,7 @@ def guessnumber(x, y):
         if number > random:
             attemps += 1
             substact = number - random
+
             #If the number is close or far than the generated
             if substact < 10:
                 print(big + close)
@@ -40,6 +48,7 @@ def guessnumber(x, y):
         else:
             attemps += 1
             substact = random - number
+
             #If the number is close or far than the generated
             if substact < 10:
                 print(small + close)
@@ -56,22 +65,33 @@ def guessnumber(x, y):
     main()
 
 def menu(op):
+
     if op == 1:
         clear()
-        print(equals)
-        print("|------------GUESS THE NUMBER-----------|")
-        print(f"{equals}\n\n")
 
-        #Assigned limit by the user
-        number_limit = int(input("Please, choose a number greater than 1: "))
-        #Generated the number
-        random_number = random.randint(1, number_limit)
-        print()
-        #Sending the values
-        guessNumber(random_number, number_limit)
+        while True:
+
+            print(equals)
+            print("|------------GUESS THE NUMBER-----------|")
+            print(f"{equals}\n\n")
+
+            try:
+                #Assigned limit by the user
+                number_limit = int(input("Please, choose a number greater than 1: "))
+                
+                #Generated the number
+                random_number = random.randint(1, number_limit)
+
+                #Sending the values
+                guessnumber(random_number, number_limit)
+                
+            except (ValueError, TypeError, IndexError):
+                print("\n|--- ERROR: The data entered is invalid ---|\n")
 
     elif op == 2:
+
         clear()
+
         print(equals)
         print("|--------------INSTRUCCIONS-------------|")
         print(f"{equals}\n\n")
@@ -91,22 +111,36 @@ def menu(op):
         menu(1)
 
     elif op == 3:
+
         clear()
+
         print("\n|---- Thanks for playing :D ---|\n\n")
         quit()
 
 def main():
+
     clear()
-    print(equals)
-    print("|-----Welcome to 'Guess the Number'-----|")
-    print(f"{equals}\n")
 
-    print("1. Play")
-    print("2. Instruccions")
-    print("3. Exit")
+    while True:  
+          
+        print(equals)
+        print("|-----Welcome to 'Guess the Number'-----|")
+        print(f"{equals}\n")
 
-    option = int(input("\nPlease choose a option to continue: "))
-    
-    menu(option)
+        try:
+            print("1. Play")
+            print("2. Instruccions")
+            print("3. Exit")
+
+            option = int(input("\nPlease choose a option to continue: "))
+
+            if option < 1 or option > 3:
+                print("\n|--- ERROR: The option entered is invalid ---|\n")
+
+        except (ValueError, TypeError, IndexError):
+            print("\n|--- ERROR: The data entered is invalid ---|\n")
+
+        finally:
+            menu(option)
 
 main()
