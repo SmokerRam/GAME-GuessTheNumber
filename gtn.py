@@ -67,7 +67,7 @@ def guessnumber(x, y):
 def menu(op):
 
     if op == 1:
-        
+
         clear()
 
         while True:
@@ -125,7 +125,7 @@ def main():
     while True:  
 
         print(equals)
-        print("|-----Welcome to 'Guess the Number'-----|")
+        print("|---- Welcome to 'Guess the Number' ----|")
         print(f"{equals}\n")
 
         try:
