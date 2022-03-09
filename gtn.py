@@ -66,10 +66,12 @@ def guessnumber(x, y):
 
 def menu(op):
 
+    #Play
     if op == 1:
 
         clear()
 
+        #True until they enter an integer
         while True:
 
             print(equals)
@@ -89,6 +91,7 @@ def menu(op):
             except (ValueError, TypeError, IndexError):
                 print("\n|--- ERROR: The data entered is invalid ---|\n")
 
+    #Instruccions
     elif op == 2:
 
         clear()
@@ -111,6 +114,7 @@ def menu(op):
         input('Press any key to continue...')
         menu(1)
 
+    #Exit
     elif op == 3:
 
         clear()
@@ -122,6 +126,7 @@ def main():
 
     clear()
 
+    #True until they choose a valid option
     while True:  
 
         print(equals)
@@ -138,10 +143,10 @@ def main():
             if option < 1 or option > 3:
                 print("\n|--- ERROR: The option entered is invalid ---|\n")
 
+            else:
+                menu(option)
+
         except (ValueError, TypeError, IndexError):
             print("\n|--- ERROR: The data entered is invalid ---|\n")
-
-        finally:
-            menu(option)
 
 main()
