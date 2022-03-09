@@ -1,4 +1,4 @@
-#Random Librery
+#Libraries
 import random
 import os
 
